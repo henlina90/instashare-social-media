@@ -21,7 +21,7 @@ const Sidebar = ({ user, closeToggle }) => {
           to="/"
           className="logo flex px-4 gap-2 mb-4 pt-4 w-190 items-center"
         >
-          instashare
+          sharepin
         </Link>
         <div className="flex flex-col gap-4">
           <NavLink

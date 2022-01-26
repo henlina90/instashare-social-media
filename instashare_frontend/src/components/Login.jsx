@@ -41,7 +41,7 @@ const Login = () => {
         <div className="absolute flex flex-col justify-center items-center top-0 right-0 left-0 bottom-0 bg-blackOverlay">
           <div className="p-4 logo text-white">
             {/* <img src={logo} width="130px" alt="logo" /> */}
-            instashare
+            sharepin
           </div>
           <div className="shadow-2xl">
             <GoogleLogin

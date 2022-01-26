@@ -45,7 +45,7 @@ const Home = () => {
           />
           <Link to="/" className="logo">
             {/* <img src={logo} alt="logo" className="w-28" /> */}
-            instashare
+            sharepin
           </Link>
           {/* <Link to={`user-profile/${user?._id}`}>
             <img src={`user/${user?.image}`} alt="user-icon" className="w-28" />
