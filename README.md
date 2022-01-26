@@ -1,4 +1,4 @@
-# Instashare - Image Sharing App
+# Sharepin - Image Sharing App
 
 A photo sharing social media application (similiar to pinterest).
 
