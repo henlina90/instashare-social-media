@@ -21,7 +21,7 @@ To get this project running locally, you will need to configure your environment
 ### Getting Started
 
 1. Fork or clone this repository
-2. `cd instashare-social-media`
+2. `cd sharepin-social-media`
 3. Follow 'Backend Setup w/Sanity'
 4. Follow 'Frontend Setup w/Google'
 5. `cd instashare-frontend`
