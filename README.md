@@ -16,7 +16,7 @@
 
 ## Dev Setup
 
-To get this project running locally, you will need to configure your environment variables in which will require you to create an account with Sanity.io and Google Cloud.
+To get this project running locally, you will need to configure your environment variables in which will require you to create an account with [Sanity](https://www.sanity.io/) and [Google Cloud](https://cloud.google.com/).
 
 ### Getting Started
 
@@ -37,37 +37,45 @@ To get this project running locally, you will need to configure your environment
 5. `sanity init`
    - Select to create new project
      - Enter `(Y)` to use the default dataset configuration.
-   - To start the development server for Sanity Studio, run this command: `sanity start`
+
+To start the development server for Sanity Studio, run this command: `sanity start`
 
 Next, you will open the Sanity project management UI where you can add **API token** and **CORS origins**.
 
-To get started, run `sanity manage`
+In your terminal, run `sanity manage` to get started.
 
-**Add API Token**
+<Details>
+  <Summary>Add API Token</Summary>
 
-- _API > Tokens > Add API Token_
-  - Enter a name and select 'Editor' for permissions then save.
+_API > Tokens > Add API Token_
 
-**Add CORS origin**
+- Enter a name and select 'Editor' for permissions then save.
 
-- _API > CORS origins > Add CORS Origin_
-  - Allow credentials for each of the following origins:
-    - http://localhost:3000
-    - http://localhost:3333
+</Details>
 
-** _end of the backend setup_ **
+<Details>
+  <Summary>Add CORS origin</Summary>
 
-### Frontend Setup w/Google Cloud
+_API > CORS origins > Add CORS Origin_
+
+- Allow credentials for each of the following origins:
+  - http://localhost:3000
+  - http://localhost:3333
+
+</Details>
+
+### Frontend Setup w/Google
 
 1. `cd instashare_frontend`
 2. `npm install`
 3. Create google client ID
-   - Visit https://console.cloud.google.com to create a google cloud account.
+   - Visit https://cloud.google.com/ to create a google cloud account.
      - Create a new project and enter project name then create.
 
-**Create credentials**
-
-_APIs & Services > Dashboard > Credentials_
+<Details>
+  <Summary>Create Credentials</Summary>
+  
+  _APIs & Services > Dashboard > Credentials_
 
 - Click 'Create credentials' > Select 'OAuth client ID' > Click 'Configure consent screen'
 
@@ -83,7 +91,10 @@ Using your dashboard, navigate to 'Credentials' page to grab your client ID.
 
 > Note: If the OAuth Client ID was not auto-generated, you can manually create it by clicking the 'create credentials' button. For this project, you will select 'application type' as `web application` and add `http://localhost:3000` as the URI. The Client ID will generate once you click the 'create' button.
 
-**Configure Environment Variables**
+</Details>
+
+<Details>
+  <Summary>Configure Environment Variables</Summary>
 
 To create a new .env file, run `touch .env`
 
@@ -95,10 +106,8 @@ REACT_APP_SANITY_PROJECT_ID=
 REACT_APP_GOOGLE_API_TOKEN=
 ```
 
-** _end of the frontend setup_ **
+</Details>
 
 In `/instashare_frontend`, run this command: `npm start`
 
-You may start adding pins through your sanity studio by running the command `sanity start` or by logging in with google at http://localhost:3000/login
-
-> Note: If you run into any issues, try restarting your server by running the command `sanity start` in `/instashare_backend` and `npm start` in `/instashare_frontend`.
+http://localhost:3000/login
