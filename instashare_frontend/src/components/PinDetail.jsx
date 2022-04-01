@@ -68,12 +68,12 @@ const PinDetail = ({ user }) => {
     <>
       {pinDetail && (
         <div
-          className="flex xl:flex-row flex-col m-auto bg-stone-50 p-4"
+          className="flex xl:flex-row flex-col m-auto bg-neutral-50 p-4"
           style={{ maxWidth: "1500px", borderRadius: "32px" }}
         >
           <div className="flex justify-center items-center md:items-start flex-initial">
             <img
-              className="rounded-xs"
+              className="rounded"
               src={pinDetail?.image && urlFor(pinDetail?.image).url()}
               alt="user-post"
             />
@@ -83,7 +83,7 @@ const PinDetail = ({ user }) => {
               <a
                 href={`${pinDetail.image.asset.url}?dl=`}
                 download
-                className="flex items-center justify-center bg-stone-100 p-4 rounded-full"
+                className="flex items-center justify-center bg-neutral-100 hover:bg-neutral-200 font-medium py-2 px-4 rounded-full"
               >
                 <HiOutlineDownload className="mr-2" />
                 <p className="text-sm">Download</p>
@@ -145,7 +145,7 @@ const PinDetail = ({ user }) => {
                   />
                 </Link>
                 <input
-                  className="flex-1 outline-none border-1 bg-stone-100 p-2 rounded-full focus:border-stone-900"
+                  className="flex-1 outline-none border-1 bg-neutral-100 py-2 px-4 rounded-full focus:border-neutral-900"
                   type="text"
                   placeholder="Add a comment..."
                   value={comment}
@@ -153,7 +153,7 @@ const PinDetail = ({ user }) => {
                 />
                 <button
                   type="button"
-                  className="bg-stone-900 text-white rounded-full px-8 text-base outline-none"
+                  className="bg-neutral-800 hover:bg-neutral-700 text-white font-medium py-2 px-4 rounded-full"
                   onClick={addComment}
                 >
                   {addingComment ? "Doing..." : "Done"}

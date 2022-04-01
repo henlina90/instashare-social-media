@@ -8,8 +8,8 @@ const Navbar = ({ searchTerm, setSearchTerm, user }) => {
   if (!user) return null;
 
   return (
-    <div className="flex gap-2 md:gap-4 w-full mt-4 pb-8">
-      <div className="flex justify-start items-center w-full px-4 bg-neutral-100 rounded-full border-none outline-none">
+    <div className="flex gap-2 md:gap-4 w-full mt-4 pb-8 bg-neutral-100">
+      <div className="flex justify-start items-center w-full px-4 bg-white rounded-full border-none outline-none">
         <HiSearch fontSize={21} />
         <input
           type="text"
@@ -17,7 +17,7 @@ const Navbar = ({ searchTerm, setSearchTerm, user }) => {
           placeholder="Search"
           value={searchTerm}
           onFocus={() => navigate("/search")}
-          className="w-full bg-neutral-100 outline-none"
+          className="w-full bg-white outline-none ml-2"
         />
       </div>
       <div className="flex gap-2">
@@ -30,7 +30,7 @@ const Navbar = ({ searchTerm, setSearchTerm, user }) => {
         </Link>
         <Link
           to="/create-pin"
-          className="bg-stone-900 text-white rounded w-12 h-12 md:w-14 md:h-12 flex justify-center items-center"
+          className="bg-neutral-800 hover:bg-neutral-700 text-white rounded w-12 h-12 md:w-14 md:h-12 flex justify-center items-center"
         >
           <HiPlus className="text-xl" />
         </Link>

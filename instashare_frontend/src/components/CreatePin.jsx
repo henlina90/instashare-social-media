@@ -87,20 +87,20 @@ const CreatePin = ({ user }) => {
           All fields are required.
         </p>
       )}
-      <div className=" flex lg:flex-row flex-col justify-center items-center bg-white lg:p-4 p-2 lg:w-4/5  w-full">
-        <div className="bg-neutral-100 p-4 flex flex-0.7 w-full">
-          <div className="flex justify-center items-center flex-col border-2 border-dotted border-gray-300 p-2 w-full h-420">
+      <div className="flex lg:flex-row flex-col justify-center items-center lg:p-2 p-2 lg:w-4/5 w-full">
+        <div className="bg-zinc-100 p-2 flex flex-0.7 w-full">
+          <div className="flex justify-center items-center flex-col border border-dashed rounded border-zinc-800 p-2 w-full h-420">
             {loading && <Spinner />}
             {wrongImageType && (
-              <p>
-                File type is not supported. Recommendation: JPG, JPEG, SVG, PNG,
-                GIF or TIFF less than 20MB
+              <p className="text-red-600 text-center">
+                File type must be: JPG, JPEG, SVG, PNG, GIF or TIFF less than
+                20MB
               </p>
             )}
             {!imageAsset ? (
               <label>
                 <div className="flex flex-col items-center justify-center h-full">
-                  <div className="flex flex-col justify-center items-center">
+                  <div className="flex flex-col text-zinc-800 justify-center items-center">
                     <p className="text-4xl cursor-pointer">
                       <RiUploadCloud2Fill />
                     </p>
@@ -127,7 +127,7 @@ const CreatePin = ({ user }) => {
                 />
                 <button
                   type="button"
-                  className="absolute bottom-2 right-2 p-2 rounded-md bg-white text-xl cursor-pointer outline-none hover:shadow-md transition-all duration-500 ease-in-out"
+                  className="absolute bottom-2 right-2 bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-full"
                   onClick={() => setImageAsset(null)}
                 >
                   <RiDeleteBin2Fill />
@@ -136,8 +136,8 @@ const CreatePin = ({ user }) => {
             )}
           </div>
         </div>
-        <div className="flex flex-1 flex-col gap-6 lg:pl-4 mt-4 w-full">
-          {user && (
+        <div className="flex flex-1 flex-col gap-4 lg:pl-4 mt-4 w-full">
+          {/* {user && (
             <div className="flex gap-2 mt-2 mb-2 items-center bg-white rounded-md">
               <img
                 src={user.image}
@@ -146,13 +146,14 @@ const CreatePin = ({ user }) => {
               />
               <p className="font-bold">{user.userName}</p>
             </div>
-          )}
+          )} */}
+          <p className="font-bold">Pin Details</p>
           <input
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Write a caption..."
-            className="outline-none text-base border-b-2 border-gray-200 p-2 focus:ring-0 focus:border-stone-900"
+            className="outline-none text-base p-2 bg-white rounded"
           />
 
           <input
@@ -160,30 +161,30 @@ const CreatePin = ({ user }) => {
             value={about}
             onChange={(e) => setAbout(e.target.value)}
             placeholder="Add a short description..."
-            className="outline-none text-base border-b-2 border-gray-200 p-2 focus:ring-0 focus:border-stone-900"
+            className="outline-none text-base py-2 px-4 bg-white rounded"
           />
           <input
             type="text"
             value={destination}
             onChange={(e) => setDestination(e.target.value)}
             placeholder="Add location or a destination link..."
-            className="outline-none text-base border-b-2 border-gray-200 p-2 focus:ring-0 focus:border-stone-900"
+            className="outline-none text-base py-2 px-4 bg-white rounded"
           />
           <div className="flex flex-col">
             <div>
-              <p className="mb-2">Choose a category</p>
+              <p className="mb-2 text-zinc-800">Choose a category</p>
               <select
                 onChange={(e) => {
                   setCategory(e.target.value);
                 }}
-                className="outline-none w-full text-base border-b-2 border-gray-200 p-2 cursor-pointer focus:ring-0 focus:border-stone-900"
+                className="outline-none w-full text-base bg-white rounded py-2 px-4 cursor-pointer"
               >
                 <option value="other" className="sm:text-bg bg-white">
                   Select an option
                 </option>
                 {categories.map((category) => (
                   <option
-                    className="text-base border-0 outline-none capitalize bg-white text-stone-900"
+                    className="text-base outline-none bg-white text-zinc-800"
                     value={category.name}
                   >
                     {category.name}
@@ -195,7 +196,7 @@ const CreatePin = ({ user }) => {
               <button
                 type="button"
                 onClick={savePin}
-                className="bg-stone-900 text-white p-2 rounded-md w-28 outline-none"
+                className="bg-neutral-800 hover:bg-neutral-700 text-white font-medium py-2 px-4 rounded-full"
               >
                 Save Pin
               </button>

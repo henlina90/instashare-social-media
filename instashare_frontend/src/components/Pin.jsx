@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-import { HiOutlineDownload, HiOutlineLink } from "react-icons/hi";
+import { HiOutlineDownload } from "react-icons/hi";
 import { AiTwotoneDelete } from "react-icons/ai";
+import { RiDeleteBin2Fill } from "react-icons/ri";
 
 import { client, urlFor } from "../client";
 
@@ -59,7 +60,7 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
         className="relative cursor-zoom-in w-auto hover:shadow-lg overflow-hidden transition-all duration-500 ease-in-out"
       >
         <img
-          className="rounded-xs w-full "
+          className="rounded w-full "
           src={urlFor(image).width(250).url()}
           alt="user-post"
         />
@@ -74,7 +75,7 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
                   href={`${image?.asset?.url}?dl=`}
                   download
                   onClick={(e) => e.stopPropagation()}
-                  className="bg-white p-2 rounded-full w-8 h-8 flex items-center justify-center text-dark opacity-75 hover:opacity-100 outline-none"
+                  className="bg-zinc-100 py-2 px-4 rounded-full flex items-center justify-center text-zinc-900 opacity-75 hover:opacity-100 outline-none"
                 >
                   <HiOutlineDownload />
                 </a>
@@ -82,9 +83,8 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
               {alreadySaved ? (
                 <button
                   type="button"
-                  className="bg-red-500 opacity-70 hover:opacity-100 text-white p-2 text-xs rounded-3xl hover:shadow-md outline-none"
+                  className="bg-red-500 opacity-70 hover:opacity-100 text-zinc-100 text-sm py-2 px-4 rounded-full hover:shadow-md outline-none"
                 >
-                  {/* {save?.length} */}
                   Saved
                 </button>
               ) : (
@@ -94,23 +94,25 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
                     savePin(_id);
                   }}
                   type="button"
-                  className="bg-red-500 opacity-70 hover:opacity-100 text-white p-2 text-xs rounded-full hover:shadow-md outline-none"
+                  className="bg-red-500 opacity-70 hover:opacity-100 text-zinc-100 text-sm py-2 px-4 rounded-full hover:shadow-md outline-none"
                 >
                   Save
                 </button>
               )}
             </div>
-            <div className="flex justify-between items-center gap-2 w-full">
-              {destination && (
-                <a
-                  href={destination}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="bg-white flex items-center gap-2 text-xs text-stone-900 p-2 pl-4 pr-4 rounded-full opacity-70 hover:opacity-100 hover:shadow-md"
+            <div className="flex justify-between items-center w-full">
+              {user && (
+                <Link
+                  to={`/user-profile/${postedBy?._id}`}
+                  className="w-fill py-2 px-4 rounded-full bg-zinc-100 opacity-70 hover:opacity-100 hover:shadow-md flex mt-2 items-center"
                 >
-                  <HiOutlineLink />
-                  {destination?.slice(8, 17)}...
-                </a>
+                  <img
+                    className="w-6 h-6 p-1 rounded-full object-cover "
+                    src={postedBy?.image}
+                    alt="user-profile"
+                  />
+                  <p className="text-sm">{postedBy?.userName}</p>
+                </Link>
               )}
               {postedBy?._id === user?.googleId && (
                 <button
@@ -119,26 +121,15 @@ const Pin = ({ pin: { postedBy, image, _id, destination, save } }) => {
                     e.stopPropagation();
                     deletePin(_id);
                   }}
-                  className="bg-white p-2 rounded-full w-8 h-8 flex items-center justify-center text-stone-900 opacity-75 hover:opacity-100 outline-none"
+                  className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-full opacity-75 hover:opacity-100 outline-none"
                 >
-                  <AiTwotoneDelete />
+                  <RiDeleteBin2Fill />
                 </button>
               )}
             </div>
           </div>
         )}
       </div>
-      <Link
-        to={`/user-profile/${postedBy?._id}`}
-        className="flex gap-2 mt-2 items-center"
-      >
-        <img
-          className="w-4 h-4 rounded-full object-cover"
-          src={postedBy?.image}
-          alt="user-profile"
-        />
-        <p className="text-sm">{postedBy?.userName}</p>
-      </Link>
     </div>
   );
 };

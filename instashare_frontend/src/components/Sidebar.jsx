@@ -1,13 +1,12 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
-
 import { categories } from "../utils/data";
 
 const isNotActiveStyle =
-  "flex items-center px-4 gap-2 text-stone-500 hover:text-stone-900 transition-all duration-200 ease-in-out capitalize";
+  "flex items-center px-4 gap-2 text-zinc-900 hover:text-zinc-700 transition-all duration-200 ease-in-out capitalize";
 
 const isActiveStyle =
-  "flex items-center px-4 gap-2 border-r-2 border-stone-900 transition-all duration-200 ease-in-out capitalize";
+  "flex items-center px-4 gap-2 border-r-4   border-zinc-800 transition-all duration-200 ease-in-out font-bold";
 
 const Sidebar = ({ user, closeToggle }) => {
   const handleCloseSidebar = () => {
@@ -15,13 +14,16 @@ const Sidebar = ({ user, closeToggle }) => {
   };
 
   return (
-    <div className="flex flex-col justify-between bg-neutral-100 h-full overflow-y-scroll min-w-210 hide-scrollbar">
+    <div
+      className="flex flex-col justify-between
+    h-full overflow-y-scroll min-w-210 hide-scrollbar p-2 bg-white"
+    >
       <div className="flex flex-col">
         <Link
           to="/"
-          className="logo flex px-4 gap-2 mb-4 pt-4 w-190 items-center"
+          className="logo text-red-700 flex px-4 gap-2 mb-4 pt-4 w-190 items-center"
         >
-          sharepin
+          <img src="/logo.png" alt="logo" className="w-full" />
         </Link>
         <div className="flex flex-col gap-4">
           <NavLink
@@ -31,9 +33,9 @@ const Sidebar = ({ user, closeToggle }) => {
             }
           >
             {/* <HiHome className="text-2xl" /> */}
-            Home
+            <p className="text-zinc-900">Home</p>
           </NavLink>
-          <h3 className=" px-4 text-base 2xl:text-xl">Cateogries</h3>
+          <h3 className="px-4 text-zinc-900 2xl:text-xl">Categories</h3>
           {categories.slice(0, categories.length - 1).map((category) => (
             <NavLink
               to={`/category/${category.name}`}
@@ -43,11 +45,11 @@ const Sidebar = ({ user, closeToggle }) => {
               onClick={handleCloseSidebar}
               key={category.name}
             >
-              {/* <img
+              <img
                 src={category.image}
                 className="w-8 h-8 rounded-full shadow-sm"
                 alt="category"
-              /> */}
+              />
               {category.name}
             </NavLink>
           ))}
@@ -56,12 +58,12 @@ const Sidebar = ({ user, closeToggle }) => {
       {user && (
         <Link
           to={`user-profile/${user._id}`}
-          className="flex my-4 mb-3 gap-2 p-2 items-center bg-white rounded-md shadow-lg mx-4"
+          className="align-center flex my-4 mb-3 gap-2 bg-neutral-100 hover:bg-neutral-200 text-neutral-800 font-medium py-2 px-4 rounded-full"
           onClick={handleCloseSidebar}
         >
           <img
             src={user.image}
-            className="w-8 h-8 rounded-full"
+            className="align-center justify-center w-6 h-6 rounded-full"
             alt="user-profile"
           />
           <p>{user.userName}</p>

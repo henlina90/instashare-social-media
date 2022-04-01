@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { HiOutlineLogout } from "react-icons/hi";
 import { useParams, useNavigate } from "react-router-dom";
 import { GoogleLogout } from "react-google-login";
 
@@ -11,12 +10,12 @@ import MasonryLayout from "./MasonryLayout";
 import Spinner from "./Spinner";
 
 const activeBtnStyles =
-  "bg-stone-900 text-white p-2 rounded-full w-20 outline-none";
+  "bg-neutral-800 text-white py-2 px-4 rounded-full w-20 outline-none";
 const notActiveBtnStyles =
-  "bg-primary mr-4 text-stone-900 p-2 rounded-full w-20 outline-none";
+  "bg-primary mr-4 text-neutral-900 py-2 px-4 rounded-full w-20 outline-none";
 
-const randomImage =
-  "https://source.unsplash.com/1600x900/?nature,photography,technology";
+// const randomImage =
+//   "https://source.unsplash.com/1600x900/?nature,photography,technology";
 
 const UserProfile = () => {
   const [user, setUser] = useState(null);
@@ -67,15 +66,15 @@ const UserProfile = () => {
       <div className="flex flex-col pb-4">
         <div className="relative flex flex-col mb-7">
           <div className="flex flex-col justify-center items-center">
-            <img
+            {/* <img
               src={randomImage}
               alt="random-pic"
               className="w-full h-370 2xl:h-510 shadow-lg object-cover"
-            />
+            /> */}
             <img
               src={user.image}
               alt="user-pic"
-              className="rounded-full w-20 h-20 -mt-10 shadow-xl object-cover"
+              className="mt-10 rounded-full w-20 h-20 object-cover"
             />
             <h1 className="font-bold text-xl text-center mt-4 mb-4">
               {user.userName}
@@ -87,11 +86,11 @@ const UserProfile = () => {
                   render={(renderProps) => (
                     <button
                       type="button"
-                      className="bg-stone-900 p-2 text-2xl rounded-full cursor-pointer outline-none shadow-md"
+                      className="bg-neutral-800 hover:bg-neutral-700 text-white font-medium py-2 px-4 rounded-full"
                       onClick={renderProps.onClick}
                       disabled={renderProps.disabled}
                     >
-                      <HiOutlineLogout color="white" />
+                      Logout
                     </button>
                   )}
                   onLogoutSuccess={logout}
